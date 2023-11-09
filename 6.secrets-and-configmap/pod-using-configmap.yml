@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-configmap
+spec:
+  containers:
+  - name: mycontainer
+    image: nginx
+    env:
+    - name: DB_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: example-configmap
+          key: db-port
+

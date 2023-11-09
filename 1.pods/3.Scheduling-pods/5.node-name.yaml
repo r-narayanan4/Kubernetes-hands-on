@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  nodeName: kube-worker-1 # schedule pod to specific node
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+

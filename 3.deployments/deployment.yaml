@@ -1,9 +1,12 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: nginx-replicaset
+  name: nginx-deployment
+  namespace: nginx
+  annotations:
+    kubernetes.io/change-cause: "Updating to alipine version"
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: nginx
@@ -15,6 +18,6 @@ spec:
     spec:
       containers:
         - name: nginx-container
-          image: nginx:latest
+          image: nginx:alpine
           ports:
             - containerPort: 80
